@@ -13,6 +13,10 @@ public class Subject {
     private Teacher teacher;
 
 
+    public Subject() {
+    }
+
+
 
     public int getSubject_id() {
         return subject_id;
