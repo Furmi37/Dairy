@@ -1,6 +1,9 @@
 package com.furmi;
 
+import com.furmi.model.Grades;
 import com.furmi.model.Student;
+import com.furmi.model.Subject;
+import com.furmi.model.Teacher;
 import com.furmi.repository.StudentRespository;
 import com.furmi.service.StudentService;
 import jakarta.persistence.EntityManager;
@@ -15,8 +18,8 @@ public class App {
         StudentRespository studentRespository = new StudentRespository(entityManager);
         StudentService service = new StudentService(studentRespository);
 
-        Student student1 = new Student(208,"Susan","Wright","2015-04-01","2A");
 
+        Student student1 = new Student(208,"Susan","Wright","2015-04-01","2A");
 
         service.createStudent(student1);
 

@@ -16,7 +16,15 @@ public class Teacher {
     @OneToOne
     private Subject subject;
 
-
+    public Teacher(int teacher_id, String first_name, String last_name, int salary, String academic_dgr, String empl_date, Subject subject) {
+        this.teacher_id = teacher_id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.salary = salary;
+        this.academic_dgr = academic_dgr;
+        this.empl_date = empl_date;
+        this.subject = subject;
+    }
 
     public Teacher() {
     }

@@ -2,6 +2,7 @@ package com.furmi.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Student {
@@ -11,6 +12,8 @@ public class Student {
     private String last_name;
     private String birth_day;
     private String class_name;
+
+
 
     public Student(int student_id, String first_name, String last_name, String birth_day, String class_name) {
         this.student_id = student_id;
