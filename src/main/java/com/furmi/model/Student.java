@@ -6,14 +6,14 @@ import jakarta.persistence.Id;
 @Entity
 public class Student {
     @Id
-    private int studentId;
+    private int sid;
     private String firstName;
     private String lastName;
     private String birth_day;
     private String class_name;
 
-    public Student(int studentId, String firstName, String lastName, String birth_day, String class_name) {
-        this.studentId = studentId;
+    public Student(int sid, String firstName, String lastName, String birth_day, String class_name) {
+        this.sid = sid;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birth_day = birth_day;
@@ -24,12 +24,12 @@ public class Student {
 
     }
 
-    public int getStudentId() {
-        return studentId;
+    public int getSid() {
+        return sid;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
+    public void setSid(int studentId) {
+        this.sid = studentId;
     }
 
     public String getFirstName() {
@@ -67,7 +67,7 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "studentId=" + studentId +
+                "studentId=" + sid +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birth_day='" + birth_day + '\'' +
