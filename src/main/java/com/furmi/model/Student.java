@@ -1,4 +1,4 @@
-package com.furmi.student;
+package com.furmi.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,7 +11,18 @@ public class Student {
     private String lastName;
     private String birth_day;
     private String class_name;
-    private int branch_id;
+
+    public Student(int studentId, String firstName, String lastName, String birth_day, String class_name) {
+        this.studentId = studentId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birth_day = birth_day;
+        this.class_name = class_name;
+    }
+
+    public Student() {
+
+    }
 
     public int getStudentId() {
         return studentId;
@@ -53,11 +64,14 @@ public class Student {
         this.class_name = class_name;
     }
 
-    public int getBranch_id() {
-        return branch_id;
-    }
-
-    public void setBranch_id(int branch_id) {
-        this.branch_id = branch_id;
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birth_day='" + birth_day + '\'' +
+                ", class_name='" + class_name + '\'' +
+                '}';
     }
 }
