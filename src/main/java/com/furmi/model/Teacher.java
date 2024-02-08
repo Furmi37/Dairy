@@ -2,52 +2,46 @@ package com.furmi.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Teacher {
     @Id
-    private int tid;
-    private String firstName;
-    private String lastName;
+    private int teacher_id;
+    private String first_name;
+    private String last_name;
     private int salary;
-    private String subject;
     private String academic_dgr;
-    private String emplDate;
+    private String empl_date;
+    @OneToOne
+    private Subject subject;
 
-    public Teacher(int tid, String firstName, String lastName, int salary, String subject, String academic_dgr, String emplDate) {
-        this.tid = tid;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.salary = salary;
-        this.subject = subject;
-        this.academic_dgr = academic_dgr;
-        this.emplDate = emplDate;
-    }
+
 
     public Teacher() {
     }
-    public int getTid() {
-        return tid;
+    public int getTeacher_id() {
+        return teacher_id;
     }
 
-    public void setTid(int tid) {
-        this.tid = tid;
+    public void setTeacher_id(int tid) {
+        this.teacher_id = tid;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_name(String firstName) {
+        this.first_name = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String lastName) {
+        this.last_name = lastName;
     }
 
     public int getSalary() {
@@ -58,11 +52,11 @@ public class Teacher {
         this.salary = salary;
     }
 
-    public String getSubject() {
+    public Subject getSubject() {
         return subject;
     }
 
-    public void setSubject(String subject) {
+    public void setSubject(Subject subject) {
         this.subject = subject;
     }
 
@@ -74,11 +68,11 @@ public class Teacher {
         this.academic_dgr = academic_dgr;
     }
 
-    public String getEmplDate() {
-        return emplDate;
+    public String getEmpl_date() {
+        return empl_date;
     }
 
-    public void setEmplDate(String emplDate) {
-        this.emplDate = emplDate;
+    public void setEmpl_date(String emplDate) {
+        this.empl_date = emplDate;
     }
 }

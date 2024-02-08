@@ -12,7 +12,7 @@ public class StudentService {
         this.studentRespository = studentRespository;
     }
     public void createStudent(Student student){
-    studentRespository.save(student);
+    studentRespository.updateInfo(student);
     }
     public void showALLStudents(){
         List<Student> list = studentRespository.getAllStudents();

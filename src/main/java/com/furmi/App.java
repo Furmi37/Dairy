@@ -17,7 +17,11 @@ public class App {
 
         Student student1 = new Student(208,"Susan","Wright","2015-04-01","2A");
 
+
         service.createStudent(student1);
+
+
+
 
 
 

@@ -17,11 +17,11 @@ public class StudentRespository {
         return entityManager.find(Student.class, id);
     }
 
-    public void save(Student student){
+
+    public void updateInfo(Student student){
         entityManager.getTransaction().begin();
         entityManager.persist(student);
         entityManager.getTransaction().commit();
-
     }
     public List<Student> getAllStudents (){
         entityManager.getTransaction().begin();

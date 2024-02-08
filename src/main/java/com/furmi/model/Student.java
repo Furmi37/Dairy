@@ -6,16 +6,16 @@ import jakarta.persistence.Id;
 @Entity
 public class Student {
     @Id
-    private int sid;
-    private String firstName;
-    private String lastName;
+    private int student_id;
+    private String first_name;
+    private String last_name;
     private String birth_day;
     private String class_name;
 
-    public Student(int sid, String firstName, String lastName, String birth_day, String class_name) {
-        this.sid = sid;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Student(int student_id, String first_name, String last_name, String birth_day, String class_name) {
+        this.student_id = student_id;
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.birth_day = birth_day;
         this.class_name = class_name;
     }
@@ -24,28 +24,28 @@ public class Student {
 
     }
 
-    public int getSid() {
-        return sid;
+    public int getStudent_id() {
+        return student_id;
     }
 
-    public void setSid(int studentId) {
-        this.sid = studentId;
+    public void setStudent_id(int sid) {
+        this.student_id = sid;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getBirth_day() {
@@ -67,9 +67,9 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "studentId=" + sid +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "sid=" + student_id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
                 ", birth_day='" + birth_day + '\'' +
                 ", class_name='" + class_name + '\'' +
                 '}';
