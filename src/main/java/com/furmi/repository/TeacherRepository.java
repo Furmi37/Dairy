@@ -54,15 +54,15 @@ public class TeacherRepository {
         entityManager.getTransaction().commit();
     }
 
-    public List<Grades> getAllGradesForStudent(Student student) {
-//        SELECT student.student_id, grades.subject,grades.grade FROM student
-//        JOIN grades
-//        ON student.student_id = 200 AND grades.subject = 'Biology';
-        entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("FROM Student JOIN Grades ON Student.student_id = ");
-
-        return query.getResultList();
-    }
+//    public List<Grades> getAllGradesForStudent(Student student) {
+////        SELECT student.student_id, grades.subject,grades.grade FROM student
+////        JOIN grades
+////        ON student.student_id = 200 AND grades.subject = 'Biology';
+//        entityManager.getTransaction().begin();
+//        Query query = entityManager.createQuery("FROM Student JOIN Grades ON Student.student_id = ");
+//
+//        return query.getResultList();
+//    }
 
     public List<Student> getStudendsWithBirthdayThisWeek(Student student) {
         return null;
