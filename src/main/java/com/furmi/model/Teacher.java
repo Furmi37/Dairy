@@ -11,23 +11,15 @@ public class Teacher {
     private String first_name;
     private String last_name;
     private int salary;
+    private String subject;
     private String academic_dgr;
     private String empl_date;
-    @OneToOne
-    private Subject subject;
 
-    public Teacher(int teacher_id, String first_name, String last_name, int salary, String academic_dgr, String empl_date, Subject subject) {
-        this.teacher_id = teacher_id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.salary = salary;
-        this.academic_dgr = academic_dgr;
-        this.empl_date = empl_date;
-        this.subject = subject;
-    }
 
     public Teacher() {
     }
+
+
     public int getTeacher_id() {
         return teacher_id;
     }
@@ -60,11 +52,11 @@ public class Teacher {
         this.salary = salary;
     }
 
-    public Subject getSubject() {
+    public String getSubject() {
         return subject;
     }
 
-    public void setSubject(Subject subject) {
+    public void setSubject(String subject) {
         this.subject = subject;
     }
 

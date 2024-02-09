@@ -1,25 +1,25 @@
 package com.furmi.service;
 
 import com.furmi.model.Student;
-import com.furmi.repository.StudentRespository;
+import com.furmi.repository.StudentRepository;
 
 import java.util.List;
 
 public class StudentService {
-    private final StudentRespository studentRespository;
+    private final StudentRepository studentRepository;
 
-    public StudentService(StudentRespository studentRespository) {
-        this.studentRespository = studentRespository;
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
-    public void createStudent(Student student){
-    studentRespository.updateInfo(student);
+    public void updateStudentInfo(Student student){
+    studentRepository.updateInfo(student);
     }
-    public void showALLStudents(){
-        List<Student> list = studentRespository.getAllStudents();
+    public void showAllStudents(){
+        List<Student> list = studentRepository.getAllStudents();
         list.forEach(System.out::println);
     }
-    public void deleteStudents(){
-        studentRespository.deleteAllStudents();
+    public void deleteAllStudents(){
+        studentRepository.deleteAllStudents();
 
     }
 }

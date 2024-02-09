@@ -1,21 +1,25 @@
 package com.furmi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Subject {
     @Id
     private int subject_id;
     private String name;
-    @OneToOne
-    private Teacher teacher;
+
+    private int teacher;
+
+//    @OneToMany(mappedBy = "subject")
+//    List<Grades> grades;
+
+
 
 
     public Subject() {
     }
-
 
 
     public int getSubject_id() {
@@ -34,20 +38,11 @@ public class Subject {
         this.name = name;
     }
 
-    public Teacher getTeacher() {
+    public int getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(int teacher) {
         this.teacher = teacher;
     }
-    @Override
-    public String toString() {
-        return "Subject{" +
-                "sid=" + subject_id +
-                ", name='" + name + '\'' +
-                ", teacher=" + teacher.getTeacher_id() +
-                '}';
-    }
-
 }

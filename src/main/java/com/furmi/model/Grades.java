@@ -1,26 +1,22 @@
 package com.furmi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Grades {
     @Id
     private int grade_id;
-    @OneToOne
-    private Subject subject;
-    @OneToOne
-    private Student student;
+    private String subject;
+    private int student_id;
     private int grade;
     private String add_date;
+
 
 
 
     public Grades() {
 
     }
-
     public int getGrade_id() {
         return grade_id;
     }
@@ -29,20 +25,20 @@ public class Grades {
         this.grade_id = grade_id;
     }
 
-    public Subject getSubject() {
+    public String getSubject() {
         return subject;
     }
 
-    public void setSubject(Subject subject) {
+    public void setSubject(String subject) {
         this.subject = subject;
     }
 
-    public Student getStudent() {
-        return student;
+    public int getStudent_id() {
+        return student_id;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudent_id(int student_id) {
+        this.student_id = student_id;
     }
 
     public int getGrade() {
@@ -61,14 +57,4 @@ public class Grades {
         this.add_date = add_date;
     }
 
-    @Override
-    public String toString() {
-        return "Grades{" +
-                "grade_id=" + grade_id +
-                ", subject=" + subject +
-                ", student=" + student +
-                ", grade=" + grade +
-                ", add_date='" + add_date + '\'' +
-                '}';
-    }
 }
