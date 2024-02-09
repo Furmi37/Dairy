@@ -1,8 +1,9 @@
 package com.furmi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -12,6 +13,8 @@ public class Student {
     private String last_name;
     private String birth_day;
     private String class_name;
+//    @OneToMany(mappedBy = "student")
+//    List<Grades> grades;
 
 
 
@@ -26,6 +29,14 @@ public class Student {
     public Student() {
 
     }
+
+//    public List<Grades> getGrades() {
+//        return grades;
+//    }
+//
+//    public void setGrades(List<Grades> grades) {
+//        this.grades = grades;
+//    }
 
     public int getStudent_id() {
         return student_id;
