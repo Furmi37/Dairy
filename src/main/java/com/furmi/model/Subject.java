@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Subject {
     @Id
-    private int subject_id;
+    private int id;
     private String name;
 
     private int teacher;
@@ -16,18 +16,16 @@ public class Subject {
 //    List<Grades> grades;
 
 
-
-
     public Subject() {
     }
 
 
     public int getSubject_id() {
-        return subject_id;
+        return id;
     }
 
     public void setSubject_id(int sid) {
-        this.subject_id = sid;
+        this.id = sid;
     }
 
     public String getName() {
