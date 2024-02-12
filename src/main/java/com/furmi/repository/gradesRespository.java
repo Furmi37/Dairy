@@ -7,10 +7,10 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-public class GradesRespository {
+public class gradesRespository {
     private final EntityManager entityManager;
 
-    public GradesRespository(EntityManager entityManager) {
+    public gradesRespository(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 

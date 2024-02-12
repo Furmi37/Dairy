@@ -1,9 +1,7 @@
 package com.furmi;
 
-import com.furmi.model.Grades;
 import com.furmi.model.Student;
-import com.furmi.model.Teacher;
-import com.furmi.repository.GradesRespository;
+import com.furmi.repository.gradesRespository;
 import com.furmi.repository.StudentRepository;
 import com.furmi.repository.TeacherRepository;
 import com.furmi.service.StudentService;
@@ -11,10 +9,6 @@ import com.furmi.service.TeacherService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -23,7 +17,7 @@ public class App {
 
         StudentRepository studentRepository = new StudentRepository(entityManager);
         StudentService studentService = new StudentService(studentRepository);
-        GradesRespository gradesRespository = new GradesRespository(entityManager);
+        gradesRespository gradesRespository = new gradesRespository(entityManager);
 
         TeacherRepository teacherRepository = new TeacherRepository(entityManager);
         TeacherService teacherService = new TeacherService(teacherRepository,
