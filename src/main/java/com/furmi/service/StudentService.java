@@ -11,15 +11,19 @@ public class StudentService {
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-    public void updateStudentInfo(Student student){
-    studentRepository.updateInfo(student);
+
+    public void updateStudentInfo(Student student) {
+        studentRepository.updateInfo(student);
     }
-    public void showAllStudents(){
+
+    public void showAllStudents() {
         List<Student> list = studentRepository.getAllStudents();
         list.forEach(System.out::println);
     }
-    public void deleteAllStudents(){
+
+    public void deleteAllStudents() {
         studentRepository.deleteAllStudents();
 
     }
+
 }

@@ -4,17 +4,8 @@ import com.furmi.model.Grades;
 import com.furmi.model.Student;
 import com.furmi.model.Teacher;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
-import jakarta.persistence.TypedQuery;
 
-import java.sql.ResultSet;
 import java.util.List;
-import java.util.Set;
-
-import static javax.swing.DropMode.ON;
-import static org.hibernate.FetchMode.JOIN;
-import static org.hibernate.sql.ast.Clause.FOR_UPDATE;
-import static org.hibernate.sql.ast.Clause.WHERE;
 
 public class TeacherRepository {
     private final EntityManager entityManager;
@@ -23,13 +14,14 @@ public class TeacherRepository {
         this.entityManager = entityManager;
     }
 
-    public void createTeacher(Teacher teacher) {
+    public void saveTeacher(Teacher teacher) {
         entityManager.getTransaction().begin();
         entityManager.persist(teacher);
+
         entityManager.getTransaction().commit();
     }
 
-    public void createStudent(Student student) {
+    public void saveStudent(Student student) {
         entityManager.getTransaction().begin();
         entityManager.persist(student);
         entityManager.getTransaction().commit();
@@ -41,18 +33,6 @@ public class TeacherRepository {
         entityManager.getTransaction().commit();
     }
 
-    public void addGrade(Grades grade) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(grade);
-        entityManager.getTransaction().commit();
-
-    }
-
-    public void changeGrade(Grades grade) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(grade);
-        entityManager.getTransaction().commit();
-    }
 
 //    public List<Grades> getAllGradesForStudent(Student student) {
 ////        SELECT student.student_id, grades.subject,grades.grade FROM student

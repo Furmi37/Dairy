@@ -18,6 +18,12 @@ public class StudentRepository {
         return entityManager.find(Student.class, id);
     }
 
+    public Student findByEmail(String email) {
+        return entityManager.createQuery(
+                        "SELECT s from Student s WHERE s.email = :email", Student.class)
+                .setParameter("email", email).getSingleResult();
+    }
+
 
     public void updateInfo(Student student) {
         entityManager.getTransaction().begin();

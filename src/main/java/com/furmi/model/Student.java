@@ -2,48 +2,41 @@ package com.furmi.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
 public class Student {
     @Id
-    private int student_id;
+
+    private int id;
     private String first_name;
     private String last_name;
+    private String email;
     private String birth_day;
     private String class_name;
-//    @OneToMany(mappedBy = "student")
-//    List<Grades> grades;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.MERGE, orphanRemoval = true)
+    private Set<Grades> grades = new HashSet<>();
 
+    public Student() {
+    }
 
-
-    public Student(int student_id, String first_name, String last_name, String birth_day, String class_name) {
-        this.student_id = student_id;
+    public Student(int id, String first_name, String last_name, String email, String birth_day, String class_name) {
+        this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
+        this.email = email;
         this.birth_day = birth_day;
         this.class_name = class_name;
     }
 
-    public Student() {
-
-    }
-
-//    public List<Grades> getGrades() {
-//        return grades;
-//    }
-//
-//    public void setGrades(List<Grades> grades) {
-//        this.grades = grades;
-//    }
-
     public int getStudent_id() {
-        return student_id;
+        return id;
     }
 
     public void setStudent_id(int sid) {
-        this.student_id = sid;
+        this.id = sid;
     }
 
     public String getFirst_name() {
@@ -78,12 +71,29 @@ public class Student {
         this.class_name = class_name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Set<Grades> getGrades() {
+        return grades;
+    }
+
+    public void setGrades(Set<Grades> addresses) {
+        this.grades = addresses;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
-                "sid=" + student_id +
+                "id=" + id +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
+                ", email='" + email + '\'' +
                 ", birth_day='" + birth_day + '\'' +
                 ", class_name='" + class_name + '\'' +
                 '}';
