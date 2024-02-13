@@ -37,7 +37,7 @@ public class App {
 ////
 
         //Removing a Detacged instance error
-//        teacherService.deleteStudent(s1);
+        teacherService.deleteStudent(s1);
 
 
         //dzialaja

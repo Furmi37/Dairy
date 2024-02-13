@@ -44,8 +44,9 @@ public class TeacherService {
 
 
         student.getGrades().add(grade1);
-        //TU MI NIE ZAPISUJE STUDENT_ID W TABELCE GRADES -> CZY TO MA ISC PO EMAILU?
         gradesRepository.save(grade1);
+
+        //TU MI NIE ZAPISUJE STUDENT_ID W TABELCE GRADES -> CZY TO MA ISC PO EMAILU?
 //        teacherRepository.saveStudent(student);
     }
 
