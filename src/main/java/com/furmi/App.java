@@ -1,6 +1,7 @@
 package com.furmi;
 
 import com.furmi.model.Student;
+import com.furmi.model.Teacher;
 import com.furmi.repository.GradesRepository;
 import com.furmi.repository.StudentRepository;
 import com.furmi.repository.TeacherRepository;
@@ -24,7 +25,7 @@ public class App {
                 studentRepository, gradesRepository);
 
 
-//        Teacher t = new Teacher(105,"Martin", "Schmitt", 6000, 5, "mgr","2024-01-01" );
+        Teacher t = new Teacher("Martin", "Schmitt", 6000, "Computer Science", "mgr","2024-01-01" );
         Student s1 = new Student();
         s1.setFirst_name("Mark");
         s1.setLast_name("Godawski");
@@ -37,8 +38,7 @@ public class App {
 ////
 
         //Removing a Detacged instance error
-        teacherService.deleteStudent(s1);
-
+//        teacherService.createTeacher(t);
 
         //dzialaja
 //        teacherService.addGrade("calvin@gmail.com", 3, "2024-02-13", "Polish");
@@ -48,7 +48,8 @@ public class App {
 //        teacherService.showAllGradesForStudent("matt@gmail.com");
 //        teacherService.createStudent(s2);
 //        studentService.updateStudentFirstName("matt@gmail.com", "Matthew");
-
+//        teacherService.changeGrade(38, 4,"2024-02-13");
+//        teacherService.showNumberOfStudentsInClass("2B");
 
         entityManager.close();
         entityManagerFactory.close();

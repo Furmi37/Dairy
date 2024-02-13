@@ -19,6 +19,14 @@ public class Teacher {
     public Teacher() {
     }
 
+    public Teacher(String first_name, String last_name, int salary, String subject, String academic_dgr, String empl_date) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.salary = salary;
+        this.subject = subject;
+        this.academic_dgr = academic_dgr;
+        this.empl_date = empl_date;
+    }
 
     public int getTeacher_id() {
         return teacher_id;
