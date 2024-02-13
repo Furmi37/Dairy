@@ -3,6 +3,7 @@ package com.furmi.service;
 import com.furmi.model.Grades;
 import com.furmi.model.Student;
 import com.furmi.model.Teacher;
+import com.furmi.repository.GradesRepository;
 import com.furmi.repository.StudentRepository;
 import com.furmi.repository.TeacherRepository;
 
@@ -11,12 +12,12 @@ import java.util.Set;
 public class TeacherService {
     private final TeacherRepository teacherRepository;
     private final StudentRepository studentRepository;
-    private final com.furmi.repository.gradesRespository gradesRespository;
+    private final GradesRepository gradesRepository;
 
-    public TeacherService(TeacherRepository teacherRepository, StudentRepository studentRepository, com.furmi.repository.gradesRespository gradesRespository) {
+    public TeacherService(TeacherRepository teacherRepository, StudentRepository studentRepository, GradesRepository gradesRepository) {
         this.teacherRepository = teacherRepository;
         this.studentRepository = studentRepository;
-        this.gradesRespository = gradesRespository;
+        this.gradesRepository = gradesRepository;
     }
 
 
@@ -39,11 +40,13 @@ public class TeacherService {
         grade1.setGrade(grade);
         grade1.setAdd_date(add_date);
         grade1.setSubject(subject);
+        grade1.setStudent(student);
 
 
         student.getGrades().add(grade1);
-
-        teacherRepository.saveStudent(student);
+        //TU MI NIE ZAPISUJE STUDENT_ID W TABELCE GRADES -> CZY TO MA ISC PO EMAILU?
+        gradesRepository.save(grade1);
+//        teacherRepository.saveStudent(student);
     }
 
     public void showAllGradesForStudent(String email) {
@@ -55,7 +58,7 @@ public class TeacherService {
     public void deleteAllGrades() {
 
 
-        gradesRespository.deleteAll();
+        gradesRepository.deleteAll();
     }
 
 

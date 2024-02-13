@@ -27,6 +27,14 @@ public class Grades {
         this.add_date = add_date;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public int getGrade_id() {
         return id;
     }
@@ -60,22 +68,10 @@ public class Grades {
         this.add_date = add_date;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Grades grades = (Grades) o;
-        return id == grades.id && grade == grades.grade && Objects.equals(subject, grades.subject) && Objects.equals(add_date, grades.add_date) && Objects.equals(student, grades.student);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, subject, grade, add_date, student);
-    }
 
     @Override
     public String toString() {
-        return "Grades{" +
+        return "Grade{" +
                 "subject='" + subject + '\'' +
                 ", grade=" + grade +
                 ", add_date='" + add_date + '\'' +
