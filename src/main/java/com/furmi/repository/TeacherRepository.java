@@ -1,9 +1,9 @@
 package com.furmi.repository;
 
-import com.furmi.model.Grades;
 import com.furmi.model.Student;
 import com.furmi.model.Teacher;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
@@ -33,23 +33,17 @@ public class TeacherRepository {
         entityManager.getTransaction().commit();
     }
 
-
-//    public List<Grades> getAllGradesForStudent(Student student) {
-////        SELECT student.student_id, grades.subject,grades.grade FROM student
-////        JOIN grades
-////        ON student.student_id = 200 AND grades.subject = 'Biology';
-//        entityManager.getTransaction().begin();
-//        Query query = entityManager.createQuery("FROM Student JOIN Grades ON Student.student_id = ");
-//
-//        return query.getResultList();
-//    }
-
-    public List<Student> getStudendsWithBirthdayThisWeek(Student student) {
-        return null;
+    public List<Teacher> getAllTeachers() {
+        entityManager.getTransaction().begin();
+        TypedQuery<Teacher> query = entityManager.createQuery("FROM Teacher", Teacher.class);
+        return query.getResultList();
     }
 
-    public int getNumberOfStudentsInClass(Student student) {
-        return 0;
+
+    public List getNumberOfStudentsInClass(String class_name) {
+        return entityManager.createQuery(
+                        "SELECT COUNT(id)  FROM Student WHERE class_name = :class_name")
+                .setParameter("class_name", class_name).getResultList();
     }
 
 

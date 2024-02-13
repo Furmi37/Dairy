@@ -24,6 +24,9 @@ public class TeacherService {
     public void createTeacher(Teacher teacher) {
         teacherRepository.saveTeacher(teacher);
     }
+    public void showAllTeachers (){
+        teacherRepository.getAllTeachers();
+    }
 
     public void createStudent(Student student) {
         teacherRepository.saveStudent(student);
@@ -42,7 +45,6 @@ public class TeacherService {
         grade1.setSubject(subject);
         grade1.setStudent(student);
 
-
         student.getGrades().add(grade1);
         gradesRepository.save(grade1);
 
@@ -58,12 +60,20 @@ public class TeacherService {
 
     public void deleteAllGrades() {
 
-
         gradesRepository.deleteAll();
     }
 
 
-    public void changeGrade(Grades grade) {
+    public void changeGrade(long id, int new_grade, String date) {
+        Grades grade = gradesRepository.findById(id);
 
+        grade.setGrade(new_grade);
+        grade.setAdd_date(date);
+
+        gradesRepository.save(grade);
+    }
+    public void showNumberOfStudentsInClass(String class_name){
+        teacherRepository.getNumberOfStudentsInClass(class_name)
+                .forEach(s-> System.out.println("Number of students in class "+ class_name + " is " + s));
     }
 }
