@@ -1,7 +1,7 @@
 package com.furmi;
 
 import com.furmi.model.Student;
-import com.furmi.repository.gradesRespository;
+import com.furmi.repository.GradesRepository;
 import com.furmi.repository.StudentRepository;
 import com.furmi.repository.TeacherRepository;
 import com.furmi.service.StudentService;
@@ -17,11 +17,11 @@ public class App {
 
         StudentRepository studentRepository = new StudentRepository(entityManager);
         StudentService studentService = new StudentService(studentRepository);
-        gradesRespository gradesRespository = new gradesRespository(entityManager);
+        GradesRepository gradesRepository = new GradesRepository(entityManager);
 
         TeacherRepository teacherRepository = new TeacherRepository(entityManager);
         TeacherService teacherService = new TeacherService(teacherRepository,
-                studentRepository, gradesRespository);
+                studentRepository, gradesRepository);
 
 
 //        Teacher t = new Teacher(105,"Martin", "Schmitt", 6000, 5, "mgr","2024-01-01" );
@@ -35,19 +35,19 @@ public class App {
         Student s2 = new Student(3, "Calvin", "Klein", "calvin@gmail.com", "2015-08-19", "2b");
 //        Subject subject = new Subject(5, "Computer Science", 105);
 ////
-        teacherService.addGrade("calvin@gmail.com", 4, "2024-02-14", "English");
-        System.out.println("add grade -> calvin@gmail.com");
-//            studentService.showAllStudents();
-//        teacherService.createStudent(s2);
-//        System.out.println("Sus grades:");
-//        teacherService.showAllGradesForStudent("sus@gmail.com");
 
+        //Removing a Detacged instance error
+//        teacherService.deleteStudent(s1);
+
+
+        //dzialaja
+//        teacherService.addGrade("calvin@gmail.com", 3, "2024-02-13", "Polish");
+//        teacherService.showAllGradesForStudent("matt@gmail.com");
+//        studentService.showAllStudents();
 //        System.out.println("Matt grades:");
 //        teacherService.showAllGradesForStudent("matt@gmail.com");
-
-//        studentService.showAllStudents();
-
-//        studentService.showAllStudents();
+//        teacherService.createStudent(s2);
+//        studentService.updateStudentFirstName("matt@gmail.com", "Matthew");
 
 
         entityManager.close();

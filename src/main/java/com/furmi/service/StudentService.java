@@ -12,8 +12,12 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public void updateStudentInfo(Student student) {
-        studentRepository.updateInfo(student);
+    public void updateStudentFirstName(String email, String firstName) {
+        Student student = studentRepository.findByEmail(email);
+
+        student.setFirst_name(firstName);
+
+        studentRepository.saveStudentInfo(student);
     }
 
     public void showAllStudents() {

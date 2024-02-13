@@ -25,11 +25,13 @@ public class StudentRepository {
     }
 
 
-    public void updateInfo(Student student) {
+    public void saveStudentInfo(Student student) {
         entityManager.getTransaction().begin();
         entityManager.persist(student);
         entityManager.getTransaction().commit();
+
     }
+
 
     public List<Student> getAllStudents() {
         entityManager.getTransaction().begin();
