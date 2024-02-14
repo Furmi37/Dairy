@@ -14,10 +14,9 @@ import jakarta.persistence.Persistence;
 import java.util.Scanner;
 
 public class StudentInterface {
-    private static TeacherService teacherService;
-    private static StudentService studentService;
     private static final int EXIT = 0;
-
+    private static StudentService studentService;
+    private static TeacherService teacherService;
 
     //z app wywaluje z service niezbedne metody
 
@@ -26,8 +25,6 @@ public class StudentInterface {
         Option option = new Option();
 
         option.loop();
-
-
     }
 
     static class Option {
