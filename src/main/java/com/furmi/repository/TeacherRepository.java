@@ -39,12 +39,10 @@ public class TeacherRepository {
         return query.getResultList();
     }
 
-
-    public List getNumberOfStudentsInClass(String class_name) {
+    public List getNumberOfStudentsInClass(String className) {
         return entityManager.createQuery(
-                        "SELECT COUNT(id)  FROM Student WHERE className = :class_name")
-                .setParameter("class_name", class_name).getResultList();
+                        "SELECT COUNT(id)  FROM Student WHERE className = :className")
+                .setParameter("className", className).getResultList();
     }
-
 
 }

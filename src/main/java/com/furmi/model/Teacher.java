@@ -13,8 +13,8 @@ public class Teacher {
     private String subject;
     private String academicDgr;
     private String emplDate;
-//    @OneToOne
-//    private Subject sub;
+    @OneToOne(mappedBy = "teacher")
+    private Subject sub;
 
 
     public Teacher() {
@@ -83,6 +83,14 @@ public class Teacher {
 
     public void setEmplDate(String emplDate) {
         this.emplDate = emplDate;
+    }
+
+    public Subject getSub() {
+        return sub;
+    }
+
+    public void setSub(Subject sub) {
+        this.sub = sub;
     }
 
     @Override

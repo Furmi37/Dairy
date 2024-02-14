@@ -10,12 +10,8 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-
-//    private Teacher teacher;
-
-//    @OneToMany(mappedBy = "subject")
-//    List<Grades> grades;
-
+    @OneToOne
+    private Teacher teacher;
 
     public Subject() {
     }
@@ -35,6 +31,5 @@ public class Subject {
     public void setName(String name) {
         this.name = name;
     }
-
 
 }

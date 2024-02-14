@@ -23,15 +23,14 @@ public class TeacherService {
     public void createTeacher(Teacher teacher) {
         teacherRepository.saveTeacher(teacher);
     }
-    public void showAllTeachers (){
-        teacherRepository.getAllTeachers();
-    }
 
     public void createStudent(Student student) {
         teacherRepository.saveStudent(student);
     }
 
-    public void deleteStudent(Student student) {
+    public void deleteStudent(String email) {
+        Student student = studentRepository.findByEmail(email);
+
         teacherRepository.deleteStudent(student);
     }
 
@@ -49,15 +48,6 @@ public class TeacherService {
         teacherRepository.saveStudent(student);
     }
 
-    public void showAllGradesForStudent(String email) {
-        Student student = studentRepository.findByEmail(email);
-        Set<Grade> grades = student.getGrades();
-        grades.forEach(System.out::println);
-    }
-    public void deleteAllGrades() {
-        gradesRepository.deleteAll();
-    }
-
     public void changeGrade(long id, int new_grade, String date) {
         Grade grade = gradesRepository.findById(id);
 
@@ -67,8 +57,18 @@ public class TeacherService {
         gradesRepository.save(grade);
     }
 
-    public void showNumberOfStudentsInClass(String class_name){
-        teacherRepository.getNumberOfStudentsInClass(class_name)
-                .forEach(s-> System.out.println("Number of students in class "+ class_name + " is " + s));
+    public void showAllGradesForStudent(String email) {
+        Student student = studentRepository.findByEmail(email);
+        Set<Grade> grades = student.getGrades();
+        grades.forEach(System.out::println);
+    }
+
+    public void deleteAllGrades() {
+        gradesRepository.deleteAll();
+    }
+    
+    public void showNumberOfStudentsInClass(String className) {
+        teacherRepository.getNumberOfStudentsInClass(className)
+                .forEach(s -> System.out.println("Number of students in class " + className + " is " + s));
     }
 }

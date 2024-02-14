@@ -25,22 +25,21 @@ public class App {
                 studentRepository, gradesRepository);
 
 
-        Teacher t = new Teacher("Martin", "Schmitt", 6000, "Computer Science", "mgr","2024-01-01" );
+        Teacher t = new Teacher("Martin", "Schmitt", 6000, "Computer Science", "mgr", "2024-01-01");
         Student s1 = new Student();
         s1.setFirstName("Mark");
         s1.setLastName("Godawski");
         s1.setEmail("mark@gmail.com");
         s1.setBirthDay("2015-04-09");
         s1.setClassName("2B");
-        s1.setId(4);
-        Student s2 = new Student(3, "Calvin", "Klein", "calvin@gmail.com", "2015-08-19", "2b");
+//        s1.setId(4);
+        Student s2 = new Student("Calvin", "Klein", "calvin@gmail.com", "2015-08-19", "2b");
 //        Subject subject = new Subject(5, "Computer Science", 105);
 ////
-        //Removing a Detached instance error
-//        teacherService.deleteStudent(s2);
-
+//        teacherService.createStudent(new Student("Monthy", "Python", "monthy@gmail.com", "2015-01-02", "2B"));
+        studentService.showSubjectGrades("matt@gmail.com", "Polish");
         //working
-        teacherService.addGrade("calvin@gmail.com", 5, "2024-02-14", "Polish");
+//        teacherService.addGrade("calvin@gmail.com", 5, "2024-02-14", "Polish");
 //        teacherService.showAllGradesForStudent("matt@gmail.com");
 //        studentService.showAllStudents();
 //        System.out.println("Matt grades:");
