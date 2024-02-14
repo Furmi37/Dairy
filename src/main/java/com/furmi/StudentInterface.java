@@ -8,19 +8,33 @@ import com.furmi.service.TeacherService;
 import java.util.Scanner;
 
 public class StudentInterface {
+
     private final int EXIT = 0;
     private StudentService studentService;
     private TeacherService teacherService;
 
-    //teacher edit user soutami wczytuje dane
-    //menu z rozdzieleniem na student/teacher i dalej ich funkcje
-    //wczytuje maila
-    //wczytuje dane
+    private static TeacherService teacherService;
+    private static StudentService studentService;
+    private static final int EXIT = 0;
+
+
 
     //z app wywaluje z service niezbedne metody
 
+
     //menu teacher/student osbone metody
-    class Option {
+ 
+
+    public static void main(String[] args) {
+        App app = new App();
+        Option option = new Option();
+
+        option.loop();
+
+
+    }
+
+    static class Option {
         private final Scanner sc = new Scanner(System.in);
 
         private final int TEACHER = 1;
@@ -30,12 +44,14 @@ public class StudentInterface {
         public Option() {
         }
 
-        public void Loop() {
+
+        public void loop() {
             int option = 15;
-            System.out.println("Welecome in school dairy!");
+            System.out.println("Welcome in school dairy!");
             do {
                 printLoopOptions();
                 option = sc.nextInt();
+                sc.nextLine();
                 switch (option) {
                     case EXIT -> exit();
                     case TEACHER -> teacherLoop();
@@ -60,6 +76,8 @@ public class StudentInterface {
             do {
                 printTeacherOptions();
                 teacherOption = sc.nextInt();
+                sc.nextLine();
+
                 switch (teacherOption) {
                     case EXIT -> exit();
                     case ADD_STUDENT -> teacherService.createStudent(createStudentData());
@@ -72,10 +90,22 @@ public class StudentInterface {
         }
 
         private void studentLoop() {
-            int studOption = 5;
+
+            int studentOption = 5;
+            final int UPDATE_FIRST_NAME = 1;
+            final int SHOW_ALL_GRADES = 2;
+            final int SHOW_STUDENTS_IN_CLASS = 3;
             System.out.println("You entered STUDENT panel");
             printStudentOptions();
-            studOption = sc.nextInt();
+            studentOption = sc.nextInt();
+            switch (studentOption) {
+                case EXIT -> exit();
+                case UPDATE_FIRST_NAME -> studentService.updateStudentFirstName(emailData(), firstNameData());
+                case SHOW_ALL_GRADES -> studentService.showAllStudentGrades(emailData());
+                case SHOW_STUDENTS_IN_CLASS -> studentService.showAllStudentsInClass(classNameData());
+                default -> throw new IllegalArgumentException("Illegal argument you have to choose options from 0-3");
+            }
+         
         }
 
         private void exit() {
@@ -85,8 +115,9 @@ public class StudentInterface {
         private void printLoopOptions() {
             System.out.println("Choose user:");
             System.out.println(" 0 - exit program");
-            System.out.println(" 1 - for teacher");
-            System.out.println(" 2 - for student");
+            System.out.println(" 1 - teacher");
+            System.out.println(" 2 - student");
+
         }
 
         private void printTeacherOptions() {
@@ -100,14 +131,14 @@ public class StudentInterface {
         private void printStudentOptions() {
             System.out.println("Choose task:");
             System.out.println(" 0 - exit program");
-            System.out.println(" 1 - add student");
-            System.out.println(" 2 - add grade");
-            System.out.println(" 3 - change grade");
+            System.out.println(" 1 - update first name");
+            System.out.println(" 2 - show all grades");
+            System.out.println(" 3 - show number of students in class");
         }
 
         private Student createStudentData() {
-            System.out.println("Creating a student, enter first name: ");
-            String firstName = sc.nextLine();
+            System.out.println("Creating a student: ");
+            String firstName = firstNameData();
             System.out.println("Enter last name:");
             String lastName = sc.nextLine();
             System.out.println("Enter email:");
@@ -130,6 +161,8 @@ public class StudentInterface {
         }
 
         private String addDateData() {
+            sc.nextLine();
+
             System.out.println("Enter date (yyyy-mm-dd): ");
             return sc.nextLine();
         }
@@ -144,5 +177,14 @@ public class StudentInterface {
             return sc.nextInt();
         }
 
+        private String firstNameData() {
+            System.out.println("Enter first name: ");
+            return sc.nextLine();
+        }
+
+        private String classNameData() {
+            System.out.println("Enter class name: ");
+            return sc.nextLine();
+        }
     }
 }
