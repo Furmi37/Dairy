@@ -42,7 +42,7 @@ public class TeacherRepository {
 
     public List getNumberOfStudentsInClass(String class_name) {
         return entityManager.createQuery(
-                        "SELECT COUNT(id)  FROM Student WHERE class_name = :class_name")
+                        "SELECT COUNT(id)  FROM Student WHERE className = :class_name")
                 .setParameter("class_name", class_name).getResultList();
     }
 

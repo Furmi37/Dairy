@@ -24,14 +24,12 @@ public class StudentRepository {
                 .setParameter("email", email).getSingleResult();
     }
 
-
     public void saveStudentInfo(Student student) {
         entityManager.getTransaction().begin();
         entityManager.persist(student);
         entityManager.getTransaction().commit();
 
     }
-
 
     public List<Student> getAllStudents() {
         entityManager.getTransaction().begin();

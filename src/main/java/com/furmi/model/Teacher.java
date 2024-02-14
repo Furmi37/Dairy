@@ -1,55 +1,56 @@
 package com.furmi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Teacher {
     @Id
-    private int teacher_id;
-    private String first_name;
-    private String last_name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String firstName;
+    private String lastName;
     private int salary;
     private String subject;
-    private String academic_dgr;
-    private String empl_date;
+    private String academicDgr;
+    private String emplDate;
+//    @OneToOne
+//    private Subject sub;
 
 
     public Teacher() {
     }
 
-    public Teacher(String first_name, String last_name, int salary, String subject, String academic_dgr, String empl_date) {
-        this.first_name = first_name;
-        this.last_name = last_name;
+    public Teacher(String firstName, String lastName, int salary, String subject, String academicDgr, String emplDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.salary = salary;
         this.subject = subject;
-        this.academic_dgr = academic_dgr;
-        this.empl_date = empl_date;
+        this.academicDgr = academicDgr;
+        this.emplDate = emplDate;
     }
 
-    public int getTeacher_id() {
-        return teacher_id;
+    public int getId() {
+        return id;
     }
 
-    public void setTeacher_id(int tid) {
-        this.teacher_id = tid;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String firstName) {
-        this.first_name = firstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String lastName) {
-        this.last_name = lastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getSalary() {
@@ -68,19 +69,32 @@ public class Teacher {
         this.subject = subject;
     }
 
-    public String getAcademic_dgr() {
-        return academic_dgr;
+    public String getAcademicDgr() {
+        return academicDgr;
     }
 
-    public void setAcademic_dgr(String academic_dgr) {
-        this.academic_dgr = academic_dgr;
+    public void setAcademicDgr(String academicDgr) {
+        this.academicDgr = academicDgr;
     }
 
-    public String getEmpl_date() {
-        return empl_date;
+    public String getEmplDate() {
+        return emplDate;
     }
 
-    public void setEmpl_date(String emplDate) {
-        this.empl_date = emplDate;
+    public void setEmplDate(String emplDate) {
+        this.emplDate = emplDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", salary=" + salary +
+                ", subject='" + subject + '\'' +
+                ", academicDgr='" + academicDgr + '\'' +
+                ", emplDate='" + emplDate + '\'' +
+                '}';
     }
 }

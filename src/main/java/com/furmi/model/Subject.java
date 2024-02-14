@@ -7,10 +7,11 @@ import java.util.List;
 @Entity
 public class Subject {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
 
-    private int teacher;
+//    private Teacher teacher;
 
 //    @OneToMany(mappedBy = "subject")
 //    List<Grades> grades;
@@ -19,13 +20,12 @@ public class Subject {
     public Subject() {
     }
 
-
-    public int getSubject_id() {
+    public int getId() {
         return id;
     }
 
-    public void setSubject_id(int sid) {
-        this.id = sid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -36,11 +36,5 @@ public class Subject {
         this.name = name;
     }
 
-    public int getTeacher() {
-        return teacher;
-    }
 
-    public void setTeacher(int teacher) {
-        this.teacher = teacher;
-    }
 }

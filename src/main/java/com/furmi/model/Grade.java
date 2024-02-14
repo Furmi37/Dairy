@@ -2,29 +2,26 @@ package com.furmi.model;
 
 import jakarta.persistence.*;
 
-import java.util.Objects;
-
 @Entity
-public class Grades {
+public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String subject;
     private int grade;
-    private String add_date;
+    private String addDate;
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
 
-
-    public Grades() {
+    public Grade() {
     }
 
-    public Grades(int id, String subject, int grade, String add_date) {
+    public Grade(int id, String subject, int grade, String addDate) {
         this.id = id;
         this.subject = subject;
         this.grade = grade;
-        this.add_date = add_date;
+        this.addDate = addDate;
     }
 
     public Student getStudent() {
@@ -35,12 +32,12 @@ public class Grades {
         this.student = student;
     }
 
-    public int getGrade_id() {
+    public int getId() {
         return id;
     }
 
-    public void setGrade_id(int grade_id) {
-        this.id = grade_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSubject() {
@@ -51,7 +48,6 @@ public class Grades {
         this.subject = subject;
     }
 
-
     public int getGrade() {
         return grade;
     }
@@ -60,12 +56,12 @@ public class Grades {
         this.grade = grade;
     }
 
-    public String getAdd_date() {
-        return add_date;
+    public String getAddDate() {
+        return addDate;
     }
 
-    public void setAdd_date(String add_date) {
-        this.add_date = add_date;
+    public void setAddDate(String add_date) {
+        this.addDate = add_date;
     }
 
 
@@ -74,7 +70,7 @@ public class Grades {
         return "Grade{" +
                 "subject='" + subject + '\'' +
                 ", grade=" + grade +
-                ", add_date='" + add_date + '\'' +
+                ", add_date='" + addDate + '\'' +
                 '}';
     }
 }

@@ -15,7 +15,7 @@ public class StudentService {
     public void updateStudentFirstName(String email, String firstName) {
         Student student = studentRepository.findByEmail(email);
 
-        student.setFirst_name(firstName);
+        student.setFirstName(firstName);
 
         studentRepository.saveStudentInfo(student);
     }

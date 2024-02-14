@@ -1,6 +1,6 @@
 package com.furmi.repository;
 
-import com.furmi.model.Grades;
+import com.furmi.model.Grade;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
@@ -14,24 +14,24 @@ public class GradesRepository {
         this.entityManager = entityManager;
     }
 
-    public Grades findById(Long id) {
-        return entityManager.find(Grades.class, id);
+    public Grade findById(Long id) {
+        return entityManager.find(Grade.class, id);
     }
 
-    public void save(Grades grades) {
+    public void save(Grade grade) {
         entityManager.getTransaction().begin();
-        entityManager.persist(grades);
+        entityManager.persist(grade);
         entityManager.getTransaction().commit();
     }
 
-    public List<Grades> getAll() {
-        TypedQuery<Grades> query = entityManager.createQuery("FROM Grades", Grades.class);
+    public List<Grade> getAll() {
+        TypedQuery<Grade> query = entityManager.createQuery("FROM Grade", Grade.class);
         return query.getResultList();
     }
 
     public void deleteAll() {
         entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("DELETE FROM Grades");
+        Query query = entityManager.createQuery("DELETE FROM Grade");
         query.executeUpdate();
         entityManager.getTransaction().commit();
     }

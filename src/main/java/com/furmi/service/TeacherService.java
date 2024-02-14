@@ -1,6 +1,6 @@
 package com.furmi.service;
 
-import com.furmi.model.Grades;
+import com.furmi.model.Grade;
 import com.furmi.model.Student;
 import com.furmi.model.Teacher;
 import com.furmi.repository.GradesRepository;
@@ -20,7 +20,6 @@ public class TeacherService {
         this.gradesRepository = gradesRepository;
     }
 
-
     public void createTeacher(Teacher teacher) {
         teacherRepository.saveTeacher(teacher);
     }
@@ -39,39 +38,35 @@ public class TeacherService {
     public void addGrade(String email, int grade, String add_date, String subject) {
         Student student = studentRepository.findByEmail(email);
 
-        Grades grade1 = new Grades();
+        Grade grade1 = new Grade();
         grade1.setGrade(grade);
-        grade1.setAdd_date(add_date);
+        grade1.setAddDate(add_date);
         grade1.setSubject(subject);
         grade1.setStudent(student);
 
         student.getGrades().add(grade1);
-        gradesRepository.save(grade1);
 
-        //TU MI NIE ZAPISUJE STUDENT_ID W TABELCE GRADES -> CZY TO MA ISC PO EMAILU?
-//        teacherRepository.saveStudent(student);
+        teacherRepository.saveStudent(student);
     }
 
     public void showAllGradesForStudent(String email) {
         Student student = studentRepository.findByEmail(email);
-        Set<Grades> grades = student.getGrades();
+        Set<Grade> grades = student.getGrades();
         grades.forEach(System.out::println);
     }
-
     public void deleteAllGrades() {
-
         gradesRepository.deleteAll();
     }
 
-
     public void changeGrade(long id, int new_grade, String date) {
-        Grades grade = gradesRepository.findById(id);
+        Grade grade = gradesRepository.findById(id);
 
         grade.setGrade(new_grade);
-        grade.setAdd_date(date);
+        grade.setAddDate(date);
 
         gradesRepository.save(grade);
     }
+
     public void showNumberOfStudentsInClass(String class_name){
         teacherRepository.getNumberOfStudentsInClass(class_name)
                 .forEach(s-> System.out.println("Number of students in class "+ class_name + " is " + s));
