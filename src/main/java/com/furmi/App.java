@@ -33,11 +33,12 @@ public class App {
         s1.setBirthDay("2015-04-09");
         s1.setClassName("2B");
 //        s1.setId(4);
-        Student s2 = new Student("Calvin", "Klein", "calvin@gmail.com", "2015-08-19", "2b");
+        Student s2 = new Student("Calvin", "Klein", "calvin@gmail.com", "2015-08-19", "2B");
 //        Subject subject = new Subject(5, "Computer Science", 105);
 ////
 //        teacherService.createStudent(new Student("Monthy", "Python", "monthy@gmail.com", "2015-01-02", "2B"));
-        studentService.showSubjectGrades("matt@gmail.com", "Polish");
+//        studentService.showSubjectGrades("matt@gmail.com", "Polish");
+        studentService.showAllStudentsInClass("2B");
         //working
 //        teacherService.addGrade("calvin@gmail.com", 5, "2024-02-14", "Polish");
 //        teacherService.showAllGradesForStudent("matt@gmail.com");
