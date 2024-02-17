@@ -21,8 +21,9 @@ App that has two panels: teacher and student. From teacher panel you can add stu
 
 ### How to run app in console:
 
-- We need to use the command javac file_name
-- I will use the command 'javac Dairy.java' - this will create us a Dairy.class in folder with Dairy.java
+- You need to open terminal and find our java file at computer, enter a directory where we have our project.
+- Then enter to source file - src directory
+- Then you need use 'javac App.java' in command line - this will create us a Dairy.class in folder with Dairy.java
 - Then we use 'java Dairy' and our program should work sucessfully
 
 
