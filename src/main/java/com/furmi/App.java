@@ -17,7 +17,8 @@ public class App {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         StudentRepository studentRepository = new StudentRepository(entityManager);
-        StudentService studentService = new StudentService(studentRepository);
+        StudentInterface studentInterface = new StudentInterface();
+        StudentService studentService = new StudentService(studentRepository, studentInterface);
         GradesRepository gradesRepository = new GradesRepository(entityManager);
 
         TeacherRepository teacherRepository = new TeacherRepository(entityManager);

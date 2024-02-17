@@ -1,5 +1,6 @@
 package com.furmi.service;
 
+import com.furmi.StudentInterface;
 import com.furmi.model.Student;
 import com.furmi.repository.StudentRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -16,6 +17,7 @@ import static org.mockito.Mockito.*;
 class StudentServiceTest {
     private StudentRepository studentRepository;
     private StudentService studentService;
+    private StudentInterface studentInterface;
 
     private final PrintStream originalOut = System.out;
 
@@ -25,9 +27,10 @@ class StudentServiceTest {
     @BeforeEach
     public void setUp() {
         studentRepository = mock(StudentRepository.class);
+        studentInterface = mock(StudentInterface.class);
         System.setOut(new PrintStream(outContent));
 
-        studentService = new StudentService(studentRepository);
+        studentService = new StudentService(studentRepository, studentInterface);
     }
 
     @AfterEach
@@ -87,14 +90,15 @@ class StudentServiceTest {
         Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", className);
         List<Student> studs = List.of(student1, student2);
         when(studentRepository.getAllStudentsInClass(className)).thenReturn(studs);
+
         //when
         studentService.showAllStudentsInClass(className);
         //then
         String consoleOutPut = originalOut.toString();
-        String expectedString = "Student{id=1, firstName='Kalv', lastName='Klein', email='calvin@gmail.com', birthDay='2015-08-19', className='2B'}\n" +
-                "Student{id=2, firstName='Monthy', lastName='Python', email='monthy@gmail.com', birthDay='2015-04-29', className='2B'}";
+        String expectedString = "Student{id=null, firstName='Kalv', lastName='Klein', email='calvin@gmail.com', birthDay='2015-08-19', className='2B'}\n" +
+                "Student{id=null, firstName='Monthy', lastName='Python', email='monthy@gmail.com', birthDay='2015-04-29', className='2B'}";
 
-//        assertEquals(expectedString, consoleOutPut);
+//        assertEquals(expectedString, consoleOutPut.trim());
         verify(studentRepository, times(1)).getAllStudentsInClass(className);
     }
 

@@ -45,11 +45,4 @@ public class StudentRepository {
                 .setParameter("subject", subject);
         return query.getResultList();
     }
-
-    public void deleteAllStudents() {
-        entityManager.getTransaction().begin();
-        Query query = entityManager.createQuery("DELETE FROM Student");
-        query.executeUpdate();
-        entityManager.getTransaction().commit();
-    }
 }

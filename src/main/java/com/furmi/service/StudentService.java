@@ -1,5 +1,6 @@
 package com.furmi.service;
 
+import com.furmi.StudentInterface;
 import com.furmi.model.Grade;
 import com.furmi.model.Student;
 import com.furmi.repository.StudentRepository;
@@ -10,9 +11,11 @@ import java.util.Set;
 
 public class StudentService {
     private final StudentRepository studentRepository;
+    private final StudentInterface studentInterface;
 
-    public StudentService(StudentRepository studentRepository) {
+    public StudentService(StudentRepository studentRepository, StudentInterface studentInterface) {
         this.studentRepository = studentRepository;
+        this.studentInterface = studentInterface;
     }
 
     public void updateStudentFirstName(String email, String firstName) {
