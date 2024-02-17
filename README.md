@@ -1,4 +1,7 @@
 ## School dairy - project made to help school's life. 
+
+<img src="https://github.com/Furmi37/Dairy/assets/147946906/127bd85e-e280-466f-9f41-775e7715287c" width="600" height="400" />
+
 This app was made while I was learning programming.
 
 ### Technologies:
@@ -21,7 +24,7 @@ App that has two panels: teacher and student. From teacher panel you can add stu
 
 ### How to run app in console:
 
-- You need to open terminal and find our java file at computer, enter a directory where we have our project.
+- You need to open terminal and find our java file at computer, enter a directory where you have our project.
 - Then enter to source file - src directory
 - Then you need use 'javac App.java' in command line - this will create us a Dairy.class in folder with Dairy.java
 - Then we use 'java Dairy' and our program should work sucessfully
