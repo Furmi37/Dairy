@@ -67,10 +67,6 @@ public class Grade {
 
     @Override
     public String toString() {
-        return "Grade{" +
-                "subject='" + subject + '\'' +
-                ", grade=" + grade +
-                ", add_date='" + addDate + '\'' +
-                '}';
+        return "Grade{" + "subject='" + subject + '\'' + ", grade=" + grade + ", add_date='" + addDate + '\'' + '}';
     }
 }

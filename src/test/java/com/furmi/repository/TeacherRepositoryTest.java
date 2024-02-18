@@ -32,7 +32,6 @@ class TeacherRepositoryTest {
         teacherRepository = new TeacherRepository(entityManager);
     }
 
-
     @Test
     void shouldInvokeTeacherToDbUsingPersistMethod() {
         //given
@@ -76,7 +75,7 @@ class TeacherRepositoryTest {
         student.setLastName("Plaza");
         when(entityManager.getTransaction()).thenReturn(entityTransaction);
         //when
-        teacherRepository.deleteStudent(student);
+        teacherRepository.removeStudent(student);
         //then
         verify(entityManager, times(1)).remove(student);
     }

@@ -27,7 +27,7 @@ public class TeacherRepository {
         entityManager.getTransaction().commit();
     }
 
-    public void deleteStudent(Student student) {
+    public void removeStudent(Student student) {
         entityManager.getTransaction().begin();
         entityManager.remove(student);
         entityManager.getTransaction().commit();

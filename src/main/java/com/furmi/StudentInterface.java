@@ -107,7 +107,7 @@ public class StudentInterface {
         System.out.println(" 3 - Show students from class");
     }
 
-    private Student createStudentData() {
+    public Student createStudentData() {
         System.out.println("Creating a student.");
         String firstName = firstNameData();
         System.out.println("Enter last name:");

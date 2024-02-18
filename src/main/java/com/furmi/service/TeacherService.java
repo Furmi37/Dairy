@@ -14,10 +14,12 @@ public class TeacherService {
     private final StudentRepository studentRepository;
     private final GradesRepository gradesRepository;
 
+
     public TeacherService(TeacherRepository teacherRepository, StudentRepository studentRepository, GradesRepository gradesRepository) {
         this.teacherRepository = teacherRepository;
         this.studentRepository = studentRepository;
         this.gradesRepository = gradesRepository;
+
     }
 
     public void createTeacher(Teacher teacher) {
@@ -31,7 +33,7 @@ public class TeacherService {
     public void deleteStudent(String email) {
         Student student = studentRepository.findByEmail(email);
 
-        teacherRepository.deleteStudent(student);
+        teacherRepository.removeStudent(student);
     }
 
     public void addGrade(String email, int grade, String addDate, String subject) {
