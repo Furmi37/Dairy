@@ -17,17 +17,13 @@ import static org.mockito.Mockito.*;
 class StudentServiceTest {
     private StudentRepository studentRepository;
     private StudentService studentService;
-    private StudentInterface studentInterface;
-
     private final PrintStream originalOut = System.out;
-
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
 
     @BeforeEach
     public void setUp() {
         studentRepository = mock(StudentRepository.class);
-        studentInterface = mock(StudentInterface.class);
         System.setOut(new PrintStream(outContent));
 
         studentService = new StudentService(studentRepository);
@@ -83,7 +79,7 @@ class StudentServiceTest {
 
     @Test
     public void shouldShowTwoStudentsFromClass2B() {
-        //given
+        //given need a little check
         String className = "2B";
         Student student1 = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", className);
         Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", className);

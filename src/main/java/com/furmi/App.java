@@ -26,8 +26,8 @@ public class App {
                 studentRepository, gradesRepository);
 
         //starting an app
-        studentInterface.loop(teacherService, studentService);
-
+//        studentInterface.loop(teacherService, studentService);
+        teacherService.showAllGradesForStudent("matt@gmail.com");
 
         entityManager.close();
         entityManagerFactory.close();
