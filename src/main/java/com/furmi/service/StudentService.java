@@ -11,11 +11,10 @@ import java.util.Set;
 
 public class StudentService {
     private final StudentRepository studentRepository;
-    private final StudentInterface studentInterface;
 
-    public StudentService(StudentRepository studentRepository, StudentInterface studentInterface) {
+    public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
-        this.studentInterface = studentInterface;
+
     }
 
     public void updateStudentFirstName(String email, String firstName) {

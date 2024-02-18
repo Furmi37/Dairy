@@ -30,14 +30,13 @@ class StudentServiceTest {
         studentInterface = mock(StudentInterface.class);
         System.setOut(new PrintStream(outContent));
 
-        studentService = new StudentService(studentRepository, studentInterface);
+        studentService = new StudentService(studentRepository);
     }
 
     @AfterEach
     void after() {
         System.setOut(originalOut);
     }
-
 
     @Test
     public void shouldUpdateStudentFirstName() {
@@ -98,7 +97,7 @@ class StudentServiceTest {
         String expectedString = "Student{id=null, firstName='Kalv', lastName='Klein', email='calvin@gmail.com', birthDay='2015-08-19', className='2B'}\n" +
                 "Student{id=null, firstName='Monthy', lastName='Python', email='monthy@gmail.com', birthDay='2015-04-29', className='2B'}";
 
-//        assertEquals(expectedString, consoleOutPut.trim());
+        assertEquals(expectedString, consoleOutPut.trim());
         verify(studentRepository, times(1)).getAllStudentsInClass(className);
     }
 
