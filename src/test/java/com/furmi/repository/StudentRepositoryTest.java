@@ -1,6 +1,7 @@
 package com.furmi.repository;
 
 import com.furmi.model.Student;
+import com.furmi.service.TeacherService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
@@ -48,7 +49,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void shouldInvokeStudentToDbUsingPersistMethod() {
+    void shouldInvokeStudentFirstNameUpdateToDbUsingPersistMethod() {
         //given
         int id = 1;
         Student student = new Student();
@@ -64,8 +65,8 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void showGetTwoStudentsFromClass2B() {
-        //given
+    void shouldGetTwoStudentsFromClass2B() {
+        //given needs little check
         String className = "2B";
         Student student1 = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", className);
         Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", className);
@@ -83,7 +84,7 @@ class StudentRepositoryTest {
 
     @Test
     void shouldGetSubjectGrades() {
-        
+
     }
 
 
