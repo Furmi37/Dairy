@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -147,10 +148,20 @@ class TeacherServiceTest {
 
     @Test
     void showNumberOfStudentsInClass() {
-        //given
+        //given need check showing reference
         String className = "2B";
-        //when
+        Student student1 = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", className);
+        Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", className);
+        List<Student> studs = List.of(student1, student2);
+        when(teacherRepository.getNumberOfStudentsInClass(className)).thenReturn(studs);
 
+        //when
+        teacherService.showNumberOfStudentsInClass(className);
         //then
+        String expected = "Number of students in class 2A is 2";
+        String outPut = originalOut.toString();
+
+        assertEquals(expected, outPut);
+
     }
 }

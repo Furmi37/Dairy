@@ -98,7 +98,7 @@ class TeacherRepositoryTest {
 
     @Test
     void getNumberOfStudentsInClass() {
-        //given need little check
+        //given need little check showing nullpointer
         String className = "2B";
         Student student1 = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", "2B");
         Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", "2B");
