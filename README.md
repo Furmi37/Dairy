@@ -4,6 +4,7 @@
 
 This app was made while I was learning programming.
 
+
 ### Technologies:
 - Java (20.0)
 - Collections API
@@ -13,7 +14,8 @@ This app was made while I was learning programming.
 - Hibernate (6.1.7)
 - Mockito (5.5)
 - JUnit5 (5.10)
-  
+
+
 ### Features
 App that has two panels: teacher and student. From teacher panel you can add student, add grade and change it. From student panel you can check your grades, see people from your class and number of them. All functions you can use in app interface. Data in project is stored in database. The code is tested using JUnit5 and Mockito, so it should work well.
 
@@ -28,5 +30,10 @@ App that has two panels: teacher and student. From teacher panel you can add stu
 - Then enter to source file - src directory
 - Then you need use 'javac App.java' in command line - this will create us a Dairy.class in folder with Dairy.java
 - Then we use 'java Dairy' and our program should work sucessfully
-
+  
+  Your console code:
+```
+% javac App.java
+% java Dairy
+```
 
