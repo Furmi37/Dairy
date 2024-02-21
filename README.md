@@ -7,7 +7,6 @@ This app was made while I was learning programming.
 
 ### Technologies:
 - Java (20.0)
-- Collections API
 - Maven 
 - InteliJ IDEA
 - MySQL (8.0.33)
