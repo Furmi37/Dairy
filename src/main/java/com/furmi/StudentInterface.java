@@ -15,12 +15,20 @@ import jakarta.persistence.Persistence;
 import java.util.Scanner;
 
 public class StudentInterface {
+    private StudentService studentService;
+    private TeacherService teacherService;
     private final int EXIT = 0;
     private final Scanner sc = new Scanner(System.in);
     private final int TEACHER = 1;
     private final int STUDENT = 2;
 
-    public void loop(TeacherService teacherService, StudentService studentService) {
+    public StudentInterface(StudentService studentService, TeacherService teacherService) {
+        this.studentService = studentService;
+        this.teacherService = teacherService;
+    }
+
+
+    public void loop() {
         int option = 15;
         System.out.println("Welecome in school dairy!");
         do {
@@ -72,8 +80,8 @@ public class StudentInterface {
             switch (studentOption) {
                 case EXIT -> exit();
                 case UPDATE_FIRST_NAME -> studentService.updateStudentFirstName(emailData(), firstNameData());
-                case SHOW_ALL_GRADES -> studentService.showAllStudentGrades(emailData());
-                case SHOW_STUDENTS_FROM_CLASS -> studentService.showAllStudentsInClass(classNameData());
+                case SHOW_ALL_GRADES -> showAllStudentGrades();
+                case SHOW_STUDENTS_FROM_CLASS -> showAllStudentsInClass();
                 default -> throw new IllegalArgumentException("Illegal argument you have to choose options from 0-3");
             }
         } while (studentOption != 0);
@@ -105,6 +113,22 @@ public class StudentInterface {
         System.out.println(" 1 - Update student first name");
         System.out.println(" 2 - Show all grades");
         System.out.println(" 3 - Show students from class");
+    }
+
+    private void showAllgradesForStudent() {
+        String className = classNameData();
+        int numberOfStudentsInClass = teacherService.getNumberOfStudentsInClass(className);
+        System.out.println("Number of students in class " + className + " is " + numberOfStudentsInClass);
+    }
+
+    private void showAllStudentsInClass() {
+        String className = classNameData();
+        studentService.getAllStudentsInClass(className).forEach(System.out::println);
+    }
+
+    private void showAllStudentGrades() {
+        String email = emailData();
+        studentService.getAllStudentGrades(email).forEach(System.out::println);
     }
 
     public Student createStudentData() {

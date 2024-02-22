@@ -3,8 +3,10 @@ package com.furmi.repository;
 import com.furmi.model.Student;
 import com.furmi.model.Teacher;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class TeacherRepository {
@@ -39,11 +41,10 @@ public class TeacherRepository {
         return query.getResultList();
     }
 
-    public List getNumberOfStudentsInClass(String className) {
-        entityManager.getTransaction().begin();
-        return entityManager.createQuery(
-                        "SELECT COUNT(id)  FROM Student WHERE className = :className")
-                .setParameter("className", className).getResultList();
+    public List<Student> getNumberOfStudentsInClass(String className) {
+        TypedQuery<Student> query = entityManager.createQuery(
+                        "SELECT COUNT(id)  FROM Student WHERE className = :className", Student.class)
+                .setParameter("className", className);
+        return query.getResultList();
     }
-
 }

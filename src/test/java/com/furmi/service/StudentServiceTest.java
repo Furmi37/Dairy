@@ -1,6 +1,6 @@
 package com.furmi.service;
 
-import com.furmi.StudentInterface;
+import com.furmi.model.Grade;
 import com.furmi.model.Student;
 import com.furmi.repository.StudentRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -49,37 +50,32 @@ class StudentServiceTest {
     }
 
     @Test
-    public void shouldNotShowAnyGrades() {
+    public void shouldNotGetAnyGrades() {
         //given
         Student student = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", "2B");
         when(studentRepository.findByEmail(student.getEmail())).thenReturn(student);
 
         //when
-        studentService.showAllStudentGrades("calvin@gmail.com");
+        Set<Grade> result = studentService.getAllStudentGrades("calvin@gmail.com");
         //then
-        String outPut = outContent.toString();
-        String expected = "";
-
-        assertEquals(expected, outPut);
+        int expected = 0;
+        assertEquals(expected, result.size());
     }
 
     @Test
-    public void shouldNotShowSubjectGrades() {
+    public void shouldNotGetSubjectGrades() {
         Student student = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", "2B");
         when(studentRepository.findByEmail(student.getEmail())).thenReturn(student);
 
         //when
-        studentService.showSubjectGrades("calvin@gmail.com", "Polish");
+        List<Grade> result = studentService.getSubjectGrades("calvin@gmail.com", "Polish");
         //then
-        String outPut = outContent.toString();
-        String expected = "";
-
-        assertEquals(expected, outPut);
+        assertEquals(0, result.size());
     }
 
     @Test
-    public void shouldShowTwoStudentsFromClass2B() {
-        //given need a little check
+    public void shouldGetTwoStudentsFromClass2B() {
+        //given
         String className = "2B";
         Student student1 = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", className);
         Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", className);
@@ -87,13 +83,9 @@ class StudentServiceTest {
         when(studentRepository.getAllStudentsInClass(className)).thenReturn(studs);
 
         //when
-        studentService.showAllStudentsInClass(className);
+        List<Student> result = studentService.getAllStudentsInClass(className);
         //then
-        String consoleOutPut = originalOut.toString();
-        String expectedString = "Student{id=null, firstName='Kalv', lastName='Klein', email='calvin@gmail.com', birthDay='2015-08-19', className='2B'}\n" +
-                "Student{id=null, firstName='Monthy', lastName='Python', email='monthy@gmail.com', birthDay='2015-04-29', className='2B'}";
-
-        assertEquals(expectedString, consoleOutPut.trim());
+        assertEquals(studs, result);
         verify(studentRepository, times(1)).getAllStudentsInClass(className);
     }
 

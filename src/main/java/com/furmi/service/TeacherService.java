@@ -7,6 +7,7 @@ import com.furmi.repository.GradesRepository;
 import com.furmi.repository.StudentRepository;
 import com.furmi.repository.TeacherRepository;
 
+import java.util.List;
 import java.util.Set;
 
 public class TeacherService {
@@ -46,7 +47,6 @@ public class TeacherService {
         grade1.setStudent(student);
 
         student.getGrades().add(grade1);
-
         teacherRepository.saveStudent(student);
     }
 
@@ -55,22 +55,19 @@ public class TeacherService {
 
         grade.setGrade(newGrade);
         grade.setAddDate(date);
-
         gradesRepository.save(grade);
     }
 
-    public void showAllGradesForStudent(String email) {
+    public Set<Grade> getAllGradesForStudent(String email) {
         Student student = studentRepository.findByEmail(email);
-        Set<Grade> grades = student.getGrades();
-        grades.forEach(System.out::println);
+        return student.getGrades();
     }
 
     public void deleteAllGrades() {
         gradesRepository.deleteAll();
     }
 
-    public void showNumberOfStudentsInClass(String className) {
-        teacherRepository.getNumberOfStudentsInClass(className)
-                .forEach(s -> System.out.println("Number of students in class " + className + " is " + s));
+    public int getNumberOfStudentsInClass(String className) {
+        return teacherRepository.getNumberOfStudentsInClass(className).size();
     }
 }

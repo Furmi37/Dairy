@@ -125,14 +125,10 @@ class TeacherServiceTest {
         teacherService.addGrade(email, 6, "2024-02-18", "Polish");
 
         //when
-        Set<Grade> grades = student.getGrades();
+        Set<Grade> result = teacherService.getAllGradesForStudent(email);
         //then
-        String expected = "[Grade{subject='Polish', grade=4, add_date='2024-02-18'}, " +
-                "Grade{subject='Polish', grade=6, add_date='2024-02-18'}]";
-
-        String consoleOutput = grades.toString();
-        assertEquals(expected, consoleOutput.trim());
-
+        int expected = 2;
+        assertEquals(expected, result.size());
     }
 
 
@@ -147,21 +143,19 @@ class TeacherServiceTest {
     }
 
     @Test
-    void showNumberOfStudentsInClass() {
-        //given need check showing reference
+    void shouldGetNumberOfStudentsInClass() {
+        //given
         String className = "2B";
         Student student1 = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", className);
         Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", className);
         List<Student> studs = List.of(student1, student2);
+
         when(teacherRepository.getNumberOfStudentsInClass(className)).thenReturn(studs);
-
         //when
-        teacherService.showNumberOfStudentsInClass(className);
+        int result = teacherService.getNumberOfStudentsInClass(className);
         //then
-        String expected = "Number of students in class 2A is 2";
-        String outPut = originalOut.toString();
+        int expected = 2;
 
-        assertEquals(expected, outPut);
-
+        assertEquals(expected, result);
     }
 }

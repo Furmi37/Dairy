@@ -81,11 +81,4 @@ class StudentRepositoryTest {
         //then
         assertEquals(studs, result);
     }
-
-    @Test
-    void shouldGetSubjectGrades() {
-
-    }
-
-
 }

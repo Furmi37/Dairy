@@ -17,16 +17,17 @@ public class App {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         StudentRepository studentRepository = new StudentRepository(entityManager);
-        StudentInterface studentInterface = new StudentInterface();
         StudentService studentService = new StudentService(studentRepository);
         GradesRepository gradesRepository = new GradesRepository(entityManager);
 
         TeacherRepository teacherRepository = new TeacherRepository(entityManager);
         TeacherService teacherService = new TeacherService(teacherRepository,
                 studentRepository, gradesRepository);
+        StudentInterface studentInterface = new StudentInterface(studentService, teacherService);
+
 
         //starting an app
-        studentInterface.loop(teacherService, studentService);
+        studentInterface.loop();
 
 
         entityManager.close();
