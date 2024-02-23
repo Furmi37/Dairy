@@ -33,7 +33,8 @@ public class StudentRepository {
     }
 
     public List<Student> getAllStudentsInClass(String className) {
-        TypedQuery<Student> query = entityManager.createQuery("FROM Student s  WHERE s.className = :className ", Student.class)
+        TypedQuery<Student> query = entityManager.
+                createQuery("FROM Student s WHERE s.className = :className", Student.class)
                 .setParameter("className", className);
         return query.getResultList();
     }

@@ -4,7 +4,6 @@ import com.furmi.model.Student;
 import com.furmi.model.Teacher;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,16 +16,14 @@ import static org.mockito.Mockito.*;
 
 class TeacherRepositoryTest {
     private EntityManager entityManager;
-    private TypedQuery<Teacher> typedQuery;
-    private Query query;
+    private TypedQuery query;
     private TeacherRepository teacherRepository;
     private EntityTransaction entityTransaction;
 
     @BeforeEach
     void setUp() {
         entityManager = mock(EntityManager.class);
-        typedQuery = mock(TypedQuery.class);
-        query = mock(Query.class);
+        query = mock(TypedQuery.class);
         entityTransaction = mock(EntityTransaction.class);
 
         teacherRepository = new TeacherRepository(entityManager);
@@ -46,7 +43,6 @@ class TeacherRepositoryTest {
         teacherRepository.saveTeacher(teacher);
         //then
         verify(entityManager, times(1)).persist(teacher);
-
     }
 
     @Test
@@ -88,8 +84,8 @@ class TeacherRepositoryTest {
         List<Teacher> teachers = List.of(t1, t2);
 
         when(entityManager.getTransaction()).thenReturn(entityTransaction);
-        when(entityManager.createQuery("FROM Teacher", Teacher.class)).thenReturn((typedQuery));
-        when(typedQuery.getResultList()).thenReturn(teachers);
+        when(entityManager.createQuery("FROM Teacher", Teacher.class)).thenReturn((query));
+        when(query.getResultList()).thenReturn(teachers);
         //when
         List<Teacher> result = teacherRepository.getAllTeachers();
         //then
@@ -106,9 +102,11 @@ class TeacherRepositoryTest {
 
         List<Student> studs = List.of(student1, student2, student3);
 
-        when(entityManager.createQuery("SELECT COUNT(id)  FROM Student WHERE className = :className")
-                .setParameter("className", className)).thenReturn(query);
+        when(entityManager.createQuery(
+                "SELECT COUNT(id)  FROM Student WHERE className = :className", Student.class)).thenReturn(query);
+        when(query.setParameter("className", className)).thenReturn(query);
         when(query.getResultList()).thenReturn(studs);
+
         //when
         List<Student> result = teacherRepository.getNumberOfStudentsInClass(className);
 

@@ -1,10 +1,8 @@
 package com.furmi.repository;
 
 import com.furmi.model.Student;
-import com.furmi.service.TeacherService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,16 +15,14 @@ import static org.mockito.Mockito.*;
 class StudentRepositoryTest {
 
     private EntityManager entityManager;
-    private TypedQuery<Student> typedQuery;
-    private Query query;
+    private TypedQuery<Student> query;
     private StudentRepository studentRepository;
     private EntityTransaction entityTransaction;
 
     @BeforeEach
     public void setUp() {
         entityManager = mock(EntityManager.class);
-        typedQuery = mock(TypedQuery.class);
-        query = mock(Query.class);
+        query = mock(TypedQuery.class);
         entityTransaction = mock(EntityTransaction.class);
 
         studentRepository = new StudentRepository(entityManager);
@@ -65,7 +61,7 @@ class StudentRepositoryTest {
     }
 
     @Test
-    void shouldGetTwoStudentsFromClass2B() {
+    void shouldReturnListOfTwoStudentsFromClass2B() {
         //given needs little check
         String className = "2B";
         Student student1 = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", className);
@@ -73,8 +69,9 @@ class StudentRepositoryTest {
 
         List<Student> studs = List.of(student1, student2);
 
-        when(entityManager.createQuery("FROM Student s WHERE s.className = :className", Student.class).setParameter("className", className)).thenReturn(typedQuery);
-        when(typedQuery.getResultList()).thenReturn(studs);
+        when(entityManager.createQuery("FROM Student s WHERE s.className = :className", Student.class)).thenReturn(query);
+        when(query.setParameter("className", className)).thenReturn(query);
+        when(query.getResultList()).thenReturn(studs);
 
         //when
         List<Student> result = studentRepository.getAllStudentsInClass(className);
