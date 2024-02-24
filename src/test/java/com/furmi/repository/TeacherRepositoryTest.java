@@ -100,17 +100,17 @@ class TeacherRepositoryTest {
         Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", "2B");
         Student student3 = new Student("Steven", "Segall", "steven@gmail.com", "2015-04-29", "2B");
 
-        List<Student> studs = List.of(student1, student2, student3);
+        List<Student> students = List.of(student1, student2, student3);
 
         when(entityManager.createQuery(
                 "SELECT COUNT(id)  FROM Student WHERE className = :className", Student.class)).thenReturn(query);
         when(query.setParameter("className", className)).thenReturn(query);
-        when(query.getResultList()).thenReturn(studs);
+        when(query.getResultList()).thenReturn(students);
 
         //when
         List<Student> result = teacherRepository.getNumberOfStudentsInClass(className);
 
         //then
-        assertEquals(studs.size(), result.size());
+        assertEquals(students.size(), result.size());
     }
 }

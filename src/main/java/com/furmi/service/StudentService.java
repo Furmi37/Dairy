@@ -35,6 +35,4 @@ public class StudentService {
     public List<Student> getAllStudentsInClass(String className) {
         return studentRepository.getAllStudentsInClass(className);
     }
-
-
 }

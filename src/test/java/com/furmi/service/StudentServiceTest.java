@@ -79,13 +79,13 @@ class StudentServiceTest {
         String className = "2B";
         Student student1 = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", className);
         Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", className);
-        List<Student> studs = List.of(student1, student2);
-        when(studentRepository.getAllStudentsInClass(className)).thenReturn(studs);
+        List<Student> students = List.of(student1, student2);
+        when(studentRepository.getAllStudentsInClass(className)).thenReturn(students);
 
         //when
         List<Student> result = studentService.getAllStudentsInClass(className);
         //then
-        assertEquals(studs, result);
+        assertEquals(students, result);
         verify(studentRepository, times(1)).getAllStudentsInClass(className);
     }
 

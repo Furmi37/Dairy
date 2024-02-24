@@ -148,9 +148,9 @@ class TeacherServiceTest {
         String className = "2B";
         Student student1 = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", className);
         Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", className);
-        List<Student> studs = List.of(student1, student2);
+        List<Student> students = List.of(student1, student2);
 
-        when(teacherRepository.getNumberOfStudentsInClass(className)).thenReturn(studs);
+        when(teacherRepository.getNumberOfStudentsInClass(className)).thenReturn(students);
         //when
         int result = teacherService.getNumberOfStudentsInClass(className);
         //then

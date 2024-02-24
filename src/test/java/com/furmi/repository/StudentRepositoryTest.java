@@ -62,20 +62,20 @@ class StudentRepositoryTest {
 
     @Test
     void shouldReturnListOfTwoStudentsFromClass2B() {
-        //given needs little check
+        //given
         String className = "2B";
         Student student1 = new Student("Kalv", "Klein", "calvin@gmail.com", "2015-08-19", className);
         Student student2 = new Student("Monthy", "Python", "monthy@gmail.com", "2015-04-29", className);
 
-        List<Student> studs = List.of(student1, student2);
+        List<Student> students = List.of(student1, student2);
 
         when(entityManager.createQuery("FROM Student s WHERE s.className = :className", Student.class)).thenReturn(query);
         when(query.setParameter("className", className)).thenReturn(query);
-        when(query.getResultList()).thenReturn(studs);
+        when(query.getResultList()).thenReturn(students);
 
         //when
         List<Student> result = studentRepository.getAllStudentsInClass(className);
         //then
-        assertEquals(studs, result);
+        assertEquals(students, result);
     }
 }
